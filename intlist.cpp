@@ -1,10 +1,11 @@
 // intlist.cpp
 // Implements class IntList
-// YOUR NAME(S), AND DATE
+// Anna Lee, 2/2/2022
 
 #include "intlist.h"
 
 #include <iostream>
+#include <climits>
 using std::cout;
 
 // copy constructor
@@ -20,17 +21,41 @@ IntList::~IntList() {
 
 // return sum of values in list
 int IntList::sum() const {
-    return 0; // REPLACE THIS NON-SOLUTION
+    int sum = 0;
+    Node *n = first;
+    while (n) {
+        sum+= n->info;
+        n = n->next;
+    }
+    return sum;
 }
 
 // returns true if value is in the list; false if not
 bool IntList::contains(int value) const {
-    return false; // REPLACE THIS NON-SOLUTION
+    Node *n = first;
+    while (n) {
+        if (n->info == value) {
+            return true;
+        }
+        n = n->next;
+    }
+    return false;
 }
 
 // returns maximum value in list, or 0 if empty list
 int IntList::max() const {
-    return 0; // REPLACE THIS NON-SOLUTION
+    int max = INT_MIN;
+    Node *n = first;
+    if (first == 0) {
+        return 0;
+    }
+    while (n) {
+     if (n->info > max) {
+         max = n->info;
+     }   
+     n = n->next;
+    }
+    return max; // REPLACE THIS NON-SOLUTION
 }
 
 // returns average (arithmetic mean) of all values, or
