@@ -86,7 +86,7 @@ double IntList::average() const {
         return 0;
     }
     
-    return sum() / count(); // REPLACE THIS NON-SOLUTION
+    return static_cast<double>(sum()) / count(); // REPLACE THIS NON-SOLUTION
 }
 
 // inserts value as new node at beginning of list
