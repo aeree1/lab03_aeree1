@@ -10,12 +10,31 @@ using std::cout;
 
 // copy constructor
 IntList::IntList(const IntList& source) {
+    first = nullptr;
+    Node *p = source.first;
+   while (p) {
+       append(p->info);
+       p = p->next;
+   }
+
+    // for (Node *p = source.first; p != NULL; p = p->next) {
+    //     append (p->info);
+       
+    // }
+  
+    
     //IMPLEMENT THIS
 }
 
 // destructor deletes all nodes
 IntList::~IntList() {
-    //IMPLEMENT THIS
+    while (first) {
+    Node *n = first;
+    first = first->next;
+    delete n;
+    }
+    // delete first;
+
 }
 
 
@@ -61,18 +80,49 @@ int IntList::max() const {
 // returns average (arithmetic mean) of all values, or
 // 0 if list is empty
 double IntList::average() const {
-    return 0.0; // REPLACE THIS NON-SOLUTION
+    
+    Node *n = first;
+    if (first == 0) {
+        return 0;
+    }
+    
+    return sum() / count(); // REPLACE THIS NON-SOLUTION
 }
 
 // inserts value as new node at beginning of list
 void IntList::insertFirst(int value) {
-    // IMPLEMENT
+    if (first == 0) {
+        first = new Node;
+        first -> info = value;
+        first -> next = 0;
+        }
+        else {
+            Node *n = new Node;
+            n -> next = first;
+            n-> info = value;
+            first = n;
+            
+        }
 }
 
 //Assignment operator should copy the list from the source
 //to this list, deleting/replacing any existing nodes
 IntList& IntList::operator=(const IntList& source){
-    //IMPLEMENT
+
+    Node *p = source.first;
+
+    while (first) {
+    Node *n = first;
+    first = first->next;
+    delete n;
+    }
+    while (p) {
+        append (p->info);
+        p = p -> next;
+
+    }
+    
+    
     return *this;
 }
 
@@ -98,7 +148,12 @@ void IntList::append(int value) {
         n->next = new Node;
         n->next->info = value;
         n->next->next = 0;
+        
+
     }
+    
+    
+    
 }
 
 // print values enclose in [], separated by spaces
