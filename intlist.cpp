@@ -1,6 +1,6 @@
 // intlist.cpp
 // Implements class IntList
-// Anna Lee, 2/2/2022
+// Anna Lee, Aditya Patil, 2/2/2022
 
 #include "intlist.h"
 
@@ -17,13 +17,6 @@ IntList::IntList(const IntList& source) {
        p = p->next;
    }
 
-    // for (Node *p = source.first; p != NULL; p = p->next) {
-    //     append (p->info);
-       
-    // }
-  
-    
-    //IMPLEMENT THIS
 }
 
 // destructor deletes all nodes
@@ -33,7 +26,7 @@ IntList::~IntList() {
     first = first->next;
     delete n;
     }
-    // delete first;
+   
 
 }
 
@@ -74,7 +67,7 @@ int IntList::max() const {
      }   
      n = n->next;
     }
-    return max; // REPLACE THIS NON-SOLUTION
+    return max; 
 }
 
 // returns average (arithmetic mean) of all values, or
@@ -86,7 +79,7 @@ double IntList::average() const {
         return 0;
     }
     
-    return static_cast<double>(sum()) / count(); // REPLACE THIS NON-SOLUTION
+    return static_cast<double>(sum()) / count(); 
 }
 
 // inserts value as new node at beginning of list
@@ -156,7 +149,7 @@ void IntList::append(int value) {
     
 }
 
-// print values enclose in [], separated by spaces
+
 void IntList::print() const {
     Node *n = first;
     cout << '[';
@@ -169,7 +162,6 @@ void IntList::print() const {
     cout << ']';
 }
 
-// return count of values
 int IntList::count() const {
     int result = 0;
     Node *n = first;
